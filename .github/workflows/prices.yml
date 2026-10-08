@@ -1,0 +1,24 @@
+name: Refresh prices
+# Weekdays after the US close (22:30 UTC ≈ 6:30 pm ET), plus a manual "Run workflow" button.
+on:
+  schedule:
+    - cron: "30 22 * * 1-5"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  prices:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/update_prices.mjs
+      - name: Commit if anything changed
+        run: |
+          git config user.name "sif-prices-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/closes.json
+          git diff --cached --quiet || git commit -m "prices: $(node -e 'console.log(require("./data/closes.json").asOf)')"
+          git push

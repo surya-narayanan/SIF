@@ -1,0 +1,371 @@
+{
+ "note": "One thesis per ticker. Edit here (or open a PR) — the app reads this file. stance: Accumulate | Add | Hold | Watch | Trim | Exit | Spec (optional).",
+ "theses": {
+  "AAPL": {
+   "thesis": "Priciest mega-cap vs growth",
+   "stance": "Watch",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "ACN": {
+   "thesis": "Accenture is the flagship \"Bullshit Jobs\" contrarian long — a B2B-services people-factory punished as an AI loser, yet ranking high on Orange's AI-bureaucracy screen as a firm that can cut its own labor and help other large companies do the same. It is already acting: ~11,000 layoffs over three months, with the CEO saying it is \"reshaping its workforce for the AI era.\" These punished names have recently re-rated, possibly the market finally recognizing AI beneficiaries beyond the model makers.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "ADBE": {
+   "thesis": "Cheap quality (7.5x, PEG 0.55); AI-disruption debate",
+   "stance": "Accumulate",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "AMAT": {
+   "thesis": "Applied Materials is the broad wafer-fab-equipment play on the packaging transition, tied into hybrid-bonding and advanced die-attach (April 2025 Kinex partnership with BE Semi) with tools that plug into gate-all-around, backside power and wafer-level hybrid bonding. It is flagged as the most China- and mature-node-exposed of the big US WFE vendors — the key risk qualifier.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "AMBA": {
+   "thesis": "Edge-AI vision; loss-making (no valid PEG)",
+   "stance": "Spec",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "AMD": {
+   "thesis": "MI300X HBM capacity is the second-source for memory-bound inference; Azure/Meta deployments; pre-qualified across major models.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "AMZN": {
+   "thesis": "AWS + Trainium silicon",
+   "stance": "Accumulate",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "AXP": {
+   "thesis": "Provides credit cards, merchant payment processing, and a global card network for consumers and businesses.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "BA": {
+   "thesis": "Boeing is the long leg of the contrarian \"Long Boeing / Short Airbus\" trade: the most operationally troubled US major is inflecting just as Airbus hits its first serious execution wall. CFO guided (Dec 2 UBS) to ~$2B 2025 cash burn turning to low-single-digit-billions positive FCF in 2026 (~$3B) on higher 737/787 deliveries, better defense margins, the Spirit acquisition, and deleveraging; the $10B FCF target remains the destination. Airbus cut guidance on Spirit-sourced panel defects, faces GTF groundings, a software bug, slipping rate targets and 25% US tariffs — handing Boeing's US lines a pricing edge. ~low-30s x 2026 FCF on a falling multiple, backlog sold out through the decade.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "BE": {
+   "thesis": "Solid-oxide fuel cells: speed-to-power on-site generation for AI datacenters (months vs years of grid queue). Post-2Q26 7-report cluster: JPM OW $314 / RBC OP $335 / UBS Buy $300 vs Bernstein MP $282 / Mizuho Neutral $285 - ALL agree the halving from $345 to ~$167 was multiple compression, not fundamentals (rev $1,065M +166% y/y, second FY26 guide raise to $3.9-4.2B, service GM >20% first time, Brookfield $5B->$25B + Nebius $1.7B financing). Bears want capacity/2027 guidance disclosed; the 7/8 short reports (scandium, backlog-vs-RPO) drew same-week rebuttals. Catalysts: 3Q26 print late-Oct, NM air permit (was due 8/25), Fremont ramp toward 5GW.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "BIO": {
+   "thesis": "Bio-Rad Laboratories, Inc. — Develops instruments, reagents, and diagnostic test systems for life science research and clinical diagnostics laboratories.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "C": {
+   "thesis": "a global financial holding company offering trade finance, markets trading, banking, wealth management, and personal banking services including branded credit cards.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "CAT": {
+   "thesis": "Solar Turbines (simple-cycle gas) + diesel gensets + earthmoving for the data-center buildout.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "CMG": {
+   "thesis": "Chipotle anchors the Slop Bowl automation theme: down 40%+ YTD with a nasty post-3Q25 gap driving its forward P/E to multi-year lows amid localized stagflation. The report sees an inflection as back-of-house automation (it invested in automated-makeline company Hyphen in August, a partner since 2022) and a broader robotics rollout cut labor, lift throughput, and improve comps and margins.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "CRDO": {
+   "thesis": "AI-infra connectivity; >60% CAGR; expensive",
+   "stance": "Watch",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "CRM": {
+   "thesis": "Agentforce (flagship Bandwidth contract) + 'Headless 360' AI narrative; core still soft, 2H re-acceleration is the debate.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "DIS": {
+   "thesis": "operates television and media production, direct-to-consumer streaming, and amusement parks and hotels as an international family entertainment company.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "FIGR": {
+   "thesis": "operates a blockchain-native capital marketplace that originates, funds, and securitizes home equity line of credit loans, plus a digital asset exchange.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "FUN": {
+   "thesis": "Six Flags is a \"Bread & Circuses\" day/night-out beneficiary of the predictable 2026 refund event — ~32% larger refunds concentrated in households spending within 60-180 days. Theme-park outings capture that impulse in the spring window.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "GOOGL": {
+   "thesis": "Re-rated on Gemini",
+   "stance": "Accumulate",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "GRCE": {
+   "thesis": "Grace Therapeutics is a clinical-stage pharma developing proprietary reformulations of existing drugs for rare and orphan conditions, led by an intranasal nimodipine candidate for subarachnoid hemorrhage. The bull thesis is a lower-risk 505(b)(2) regulatory path targeting niche markets with limited competition. Catalysts: FDA approval decisions, commercial partnerships, and pipeline expansion.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "HD": {
+   "thesis": "The Home Depot, Inc. — sells building materials and home-improvement products, including installation and rental services, driven by home renovation and construction spending.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "HON": {
+   "thesis": "Regal's eVTOL partner, providing flight-control system integration and certification expertise for Regal's electro-mechanical actuator.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "HOOD": {
+   "thesis": "Adopter eating into CME's derivatives monopoly: Robinhood's push into perps/event contracts and crypto derivatives positions it to capture share as retail derivatives migrate off incumbent venues.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "IRM": {
+   "thesis": "Listed co-location provider named among the non-European corporates dominating the EU DC market (~45MW across three London sites).",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "ISRG": {
+   "thesis": "Intuitive Surgical, Inc. — Provides robotic-assisted surgical systems including the Da Vinci and Ion Endoluminal platforms for minimally invasive care.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "JNJ": {
+   "thesis": "Researches, develops, and manufactures healthcare products across innovative medicine, including immunology and oncology, and medical technology segments.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "JPM": {
+   "thesis": "JPMorgan Chase is the largest U.S. bank, with leading franchises in consumer banking, investment banking, markets, and asset/wealth management. The bull case is best-in-class scale, a fortress balance sheet, strong returns on equity, and technology investment widening its moat. Drivers: net interest income trends, capital markets activity, credit quality, and capital returns.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "KLAC": {
+   "thesis": "process-control (metrology + inspection) near-monopoly; inspection intensity per wafer rises with node/stack complexity (HBM 12–16-Hi, 3D DRAM), so KLA’s content grows even when wafer counts don’t. | WFE = the real bottleneck (Zephyr 2030 DRAM model, Jul ’26): the memory supercycle can’t be ‘broken’ by 2030 — wafer supply only ~2× by 2030 vs customers asking 4–5×, leaving a structural ~25% conventional-DRAM deficit (~91EB supply vs ~120EB demand). HBM’s ~4× effective-wafer multiplier (bigger dies + TSV yield loss) means ~70% of Big-3 capacity is consumed by HBM, so ~2.8–3.66M WPM of incremental DRAM capacity has to be built — and equipment is THE constraint. Net: WFE is the leveraged pick-and-shovel beneficiary regardless of which memory maker wins. (Bull-modeled & promotional — citrini.com; softest input is the ~75EB ‘agentic-CPU’ demand bucket that doesn’t exist yet.)",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "KO": {
+   "thesis": "manufactures and markets non-alcoholic beverages across multiple global regional segments.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "LQDA": {
+   "thesis": "Liquidia is a biopharma commercializing inhaled treprostinil (Yutrepia) for pulmonary arterial hypertension and pulmonary hypertension associated with interstitial lung disease. The bull thesis is a differentiated dry-powder formulation that could take share from United Therapeutics products in a large PH market. Catalysts: full commercial launch ramp, litigation resolution, and prescription uptake.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "LRCX": {
+   "thesis": "WFE leader in deposition & etch, the core process steps that scale directly with 3D-DRAM scaling and HBM/advanced-packaging TSV stacking. | WFE = the real bottleneck (Zephyr 2030 DRAM model, Jul ’26): the memory supercycle can’t be ‘broken’ by 2030 — wafer supply only ~2× by 2030 vs customers asking 4–5×, leaving a structural ~25% conventional-DRAM deficit (~91EB supply vs ~120EB demand). HBM’s ~4× effective-wafer multiplier (bigger dies + TSV yield loss) means ~70% of Big-3 capacity is consumed by HBM, so ~2.8–3.66M WPM of incremental DRAM capacity has to be built — and equipment is THE constraint. Net: WFE is the leveraged pick-and-shovel beneficiary regardless of which memory maker wins. (Bull-modeled & promotional — citrini.com; softest input is the ~75EB ‘agentic-CPU’ demand bucket that doesn’t exist yet.)",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "LULU": {
+   "thesis": "lululemon athletica — designs, distributes, and retails technical athletic apparel, footwear, and accessories through company-operated and direct-to-consumer channels.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "META": {
+   "thesis": "Cheapest mega-cap compounder",
+   "stance": "BUY",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "MMM": {
+   "thesis": "3M Co. — manufactures industrial, safety, and consumer products spanning adhesives, electronics, automotive, and healthcare, with demand tied to global industrial and consumer markets.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "MNDY": {
+   "thesis": "monday.com — work-OS / work-management SaaS platform; app-layer software.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "MSFT": {
+   "thesis": "Quality at fair price",
+   "stance": "Accumulate",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "NFLX": {
+   "thesis": "Netflix, Inc. — provides subscription streaming entertainment, including video content and gaming, across US and international markets.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "NKE": {
+   "thesis": "designs, develops, markets, and sells athletic footwear, apparel, accessories, and equipment worldwide under the Nike and Converse brands.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "NVDA": {
+   "thesis": "Anchor; PEG low but cycle-peak earnings",
+   "stance": "Accumulate",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "PEP": {
+   "thesis": "PepsiCo, Inc. — manufactures, markets, and distributes beverages, food, and snacks across North America and international markets.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "QCOM": {
+   "thesis": "Watch · Tier 4 (Watch (cyclical)): Cheap but Apple-modem overhang",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "RIVN": {
+   "thesis": "Rivian Automotive designs and builds electric trucks, SUVs, and commercial delivery vans, with an upcoming mass-market R2 platform. The bull thesis is strong product/brand differentiation, a software and Amazon delivery-van relationship, the Volkswagen software joint venture, and the lower-cost R2 unlocking volume. Drivers: R2 launch, gross-margin improvement, the VW JV, and production scaling.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "SBUX": {
+   "thesis": "produces, markets, and retails specialty coffee across North America and international markets, plus a channel development segment.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "SJM": {
+   "thesis": "manufactures and markets food and beverage brands spanning coffee, spreads, pet food, and baked snacks including Folgers, Jif, and Milk-Bone.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "SNDK": {
+   "thesis": "Watch · Tier 4 (Watch (cyclical)): Pure NAND; Kioxia JV partner  [NAND / Storage]\n\n[2026-08-04 · FCC / Chinese transceivers] Reuters reports the administration is drafting curbs on NEW models of Chinese data-centre optical transceivers, possibly via the FCC's equipment-authorisation and Covered List regimes. No rule text exists yet, and it is undefined whether \"Chinese\" would turn on place of manufacture, country of origin, incorporation, ownership/control, or R&D footprint — so the scope, and the trade, are unresolved. Not a transceiver name; appears here only because it was cited as an active trade around the same session. No direct read-through from the rule.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "SNOW": {
+   "thesis": "Cortex Code (hosts Anthropic models, faster than Claude Code) is its fastest-ramping product ever; data-platform AI-implementer.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "SNPS": {
+   "thesis": "Synopsys is a fortress-EDA name temporarily mispriced after a one-time IP-contract blow-up (it demanded upfront cash to port IP to Intel's zero-volume 18A; the contract was effectively rug-pulled, sinking SNPS ~40% on a Sept 2025 call) and Ansys-integration uncertainty. The core grows 23% with a near-unassailable duopoly moat, and Ansys adds gold-standard simulation as chips move to 3D-IC. Catalysts: lost Intel revenue returning as 18A enablement, high custom-silicon design intensity, and NVIDIA's $2B stake (Dec 1, 2025). Trades ~30x next-year recurring earnings vs CDNS at 45x.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "SOFI": {
+   "thesis": "SoFi Technologies, Inc. — Financial services platform offering lending, banking, investing, and other consumer financial products.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "SOLS": {
+   "thesis": "Solstice Advanced Materials is a specialty-materials company supplying low-global-warming refrigerants, electronic and semiconductor materials, and specialty chemicals. The bull case is leadership in next-generation refrigerants plus exposure to semiconductor and data-center cooling demand. Key driver is the refrigerant transition and growth in its electronic and specialty materials segments.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "T": {
+   "thesis": "AT&T, Inc. — Provides wireless, wireline, and broadband telecommunications services to consumers and businesses in the US and Mexico.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "TMO": {
+   "thesis": "diversified life-sciences/CDMO scale; bioprocessing recovery + AI-drug pipeline volume.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "TSM": {
+   "thesis": "CoWoS advanced packaging is the gating constraint for BOTH Nvidia and Google TPUs; picks-and-shovels winner of the accelerator war. MS Greater China (May ’26): TSMC is ‘the main theme within the main theme’ — the only irreplaceable advanced-packaging (CoWoS/SoIC) supplier. CoWoS 120k→165k wafers/mo by end-2027; SoIC 45k→78k by 2027. NVDA ~59% of CoWoS, Broadcom ~20%, AMD ~9%. ‘No timing needed.’",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "UBER": {
+   "thesis": "operates a platform connecting riders, couriers, and shippers for ride-hailing, delivery, and freight services.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "UNH": {
+   "thesis": "provides health care coverage alongside health services, data analytics, and pharmacy benefit management through its UnitedHealthcare and Optum businesses.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "UPS": {
+   "thesis": "United Parcel Service, Inc. — delivers packages and provides global supply-chain management services across domestic and international markets.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "V": {
+   "thesis": "Intelligent Commerce Connect: agentic payment rails + an MCP server letting agents search/select/purchase.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "VZ": {
+   "thesis": "Verizon Communications, Inc. — Provides wireless and wireline communications, information, and entertainment products and services to consumers and businesses.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "WAB": {
+   "thesis": "provides equipment, systems, and services for freight and transit rail industries, including locomotives and signal electronics.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "WDC": {
+   "thesis": "Watch · Tier 4 (Watch (cyclical)): HDD, AI-storage renaissance",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  },
+  "WMT": {
+   "thesis": "Walmart, Inc. — Operates retail and wholesale businesses selling merchandise at everyday low prices through Walmart, Sam's Club, and international operations.",
+   "stance": "",
+   "source": "Ported from the manager's STOXTRXR book",
+   "updated": "2026-10-04"
+  }
+ }
+}

@@ -1,0 +1,568 @@
+{
+ "source": "Charles Schwab — Corporate brokerage (…159)",
+ "asOf": "2026-06-02",
+ "totalValue": 1966716.04,
+ "equitiesValue": 1917156.45,
+ "cashValue": 49559.59,
+ "note": "Snapshot from the Schwab account summary. Rows carry market value only (no share counts or cost basis), so the app derives implied shares as value ÷ that day's close and carries them forward. Any position traded since the snapshot is therefore off.",
+ "positions": [
+  {
+   "symbol": "NVDA",
+   "name": "NVIDIA",
+   "mv": 114709.25,
+   "sector": "Semiconductors"
+  },
+  {
+   "symbol": "GOOGL",
+   "name": "Alphabet A",
+   "mv": 107061.28,
+   "sector": "Communication Services"
+  },
+  {
+   "symbol": "AMZN",
+   "name": "Amazon",
+   "mv": 84579,
+   "sector": "Consumer Discretionary"
+  },
+  {
+   "symbol": "CAT",
+   "name": "Caterpillar",
+   "mv": 79761.63,
+   "sector": "Industrials"
+  },
+  {
+   "symbol": "AMD",
+   "name": "Advanced Micro Devices",
+   "mv": 77816.25,
+   "sector": "Semiconductors"
+  },
+  {
+   "symbol": "BRK/B",
+   "name": "Berkshire Hathaway B",
+   "mv": 57056.34,
+   "sector": "Financials"
+  },
+  {
+   "symbol": "BE",
+   "name": "Bloom Energy",
+   "mv": 56092,
+   "sector": "Industrials"
+  },
+  {
+   "symbol": "MSFT",
+   "name": "Microsoft",
+   "mv": 54189.92,
+   "sector": "Software & IT"
+  },
+  {
+   "symbol": "LRCX",
+   "name": "Lam Research",
+   "mv": 54100.9,
+   "sector": "Semiconductors"
+  },
+  {
+   "symbol": "AMAT",
+   "name": "Applied Materials",
+   "mv": 53109.45,
+   "sector": "Semiconductors"
+  },
+  {
+   "symbol": "KLAC",
+   "name": "KLA Corp",
+   "mv": 48851.72,
+   "sector": "Semiconductors"
+  },
+  {
+   "symbol": "AAPL",
+   "name": "Apple",
+   "mv": 47005.56,
+   "sector": "Tech Hardware"
+  },
+  {
+   "symbol": "COST",
+   "name": "Costco",
+   "mv": 40609.25,
+   "sector": "Consumer Staples"
+  },
+  {
+   "symbol": "META",
+   "name": "Meta Platforms",
+   "mv": 38128.2,
+   "sector": "Communication Services"
+  },
+  {
+   "symbol": "SNDK",
+   "name": "SanDisk",
+   "mv": 37868.6,
+   "sector": "Semiconductors"
+  },
+  {
+   "symbol": "KO",
+   "name": "Coca-Cola",
+   "mv": 37468.66,
+   "sector": "Consumer Staples"
+  },
+  {
+   "symbol": "WDC",
+   "name": "Western Digital",
+   "mv": 37459.85,
+   "sector": "Semiconductors"
+  },
+  {
+   "symbol": "C",
+   "name": "Citigroup",
+   "mv": 37163.78,
+   "sector": "Financials"
+  },
+  {
+   "symbol": "CFG",
+   "name": "Citizens Financial",
+   "mv": 35660.43,
+   "sector": "Financials"
+  },
+  {
+   "symbol": "UNH",
+   "name": "UnitedHealth",
+   "mv": 35089.83,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "SBUX",
+   "name": "Starbucks",
+   "mv": 32808.02,
+   "sector": "Consumer Discretionary"
+  },
+  {
+   "symbol": "TMO",
+   "name": "Thermo Fisher",
+   "mv": 30610.41,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "DIS",
+   "name": "Walt Disney",
+   "mv": 30320.08,
+   "sector": "Communication Services"
+  },
+  {
+   "symbol": "VZ",
+   "name": "Verizon",
+   "mv": 29498.65,
+   "sector": "Communication Services"
+  },
+  {
+   "symbol": "QCOM",
+   "name": "Qualcomm",
+   "mv": 26835.17,
+   "sector": "Semiconductors"
+  },
+  {
+   "symbol": "CVS",
+   "name": "CVS Health",
+   "mv": 26216.98,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "HD",
+   "name": "Home Depot",
+   "mv": 25612.19,
+   "sector": "Consumer Discretionary"
+  },
+  {
+   "symbol": "MTB",
+   "name": "M&T Bank",
+   "mv": 24568,
+   "sector": "Financials"
+  },
+  {
+   "symbol": "JNJ",
+   "name": "Johnson & Johnson",
+   "mv": 23036.67,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "IRM",
+   "name": "Iron Mountain REIT",
+   "mv": 21031.24,
+   "sector": "Real Estate"
+  },
+  {
+   "symbol": "ISRG",
+   "name": "Intuitive Surgical",
+   "mv": 20127.5,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "HOPE",
+   "name": "Hope Bancorp",
+   "mv": 19668.14,
+   "sector": "Financials"
+  },
+  {
+   "symbol": "AXP",
+   "name": "American Express",
+   "mv": 19571.66,
+   "sector": "Financials"
+  },
+  {
+   "symbol": "AMBA",
+   "name": "Ambarella",
+   "mv": 18613.32,
+   "sector": "Semiconductors"
+  },
+  {
+   "symbol": "HON",
+   "name": "Honeywell",
+   "mv": 18316.08,
+   "sector": "Industrials"
+  },
+  {
+   "symbol": "DTEGY",
+   "name": "Deutsche Telekom ADR",
+   "mv": 16774.5,
+   "sector": "Communication Services"
+  },
+  {
+   "symbol": "CALY",
+   "name": "Callaway/Topgolf",
+   "mv": 16697.02,
+   "sector": "Consumer Discretionary"
+  },
+  {
+   "symbol": "GILD",
+   "name": "Gilead Sciences",
+   "mv": 16104.81,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "LMND",
+   "name": "Lemonade",
+   "mv": 16028.95,
+   "sector": "Financials"
+  },
+  {
+   "symbol": "ARE",
+   "name": "Alexandria Real Estate",
+   "mv": 14489.29,
+   "sector": "Real Estate"
+  },
+  {
+   "symbol": "SNOW",
+   "name": "Snowflake",
+   "mv": 13254.9,
+   "sector": "Software & IT"
+  },
+  {
+   "symbol": "NFLX",
+   "name": "Netflix",
+   "mv": 12921.58,
+   "sector": "Communication Services"
+  },
+  {
+   "symbol": "RIVN",
+   "name": "Rivian",
+   "mv": 12821.45,
+   "sector": "Consumer Discretionary"
+  },
+  {
+   "symbol": "RSG",
+   "name": "Republic Services",
+   "mv": 12110.29,
+   "sector": "Industrials"
+  },
+  {
+   "symbol": "SPOT",
+   "name": "Spotify",
+   "mv": 11523.69,
+   "sector": "Communication Services"
+  },
+  {
+   "symbol": "WMT",
+   "name": "Walmart",
+   "mv": 11412.54,
+   "sector": "Consumer Staples"
+  },
+  {
+   "symbol": "CRDO",
+   "name": "Credo Technology",
+   "mv": 11377.5,
+   "sector": "Semiconductors"
+  },
+  {
+   "symbol": "PHG",
+   "name": "Koninklijke Philips ADR",
+   "mv": 10735.5,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "WM",
+   "name": "Waste Management",
+   "mv": 9960.09,
+   "sector": "Industrials"
+  },
+  {
+   "symbol": "ADBE",
+   "name": "Adobe",
+   "mv": 9950.68,
+   "sector": "Software & IT"
+  },
+  {
+   "symbol": "SJM",
+   "name": "J.M. Smucker",
+   "mv": 9763.09,
+   "sector": "Consumer Staples"
+  },
+  {
+   "symbol": "CYTK",
+   "name": "Cytokinetics",
+   "mv": 9720,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "STOK",
+   "name": "Stoke Therapeutics",
+   "mv": 9443.12,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "ABM",
+   "name": "ABM Industries",
+   "mv": 9205.11,
+   "sector": "Industrials"
+  },
+  {
+   "symbol": "T",
+   "name": "AT&T",
+   "mv": 8783.27,
+   "sector": "Communication Services"
+  },
+  {
+   "symbol": "BA",
+   "name": "Boeing",
+   "mv": 8263.1,
+   "sector": "Industrials"
+  },
+  {
+   "symbol": "CRM",
+   "name": "Salesforce",
+   "mv": 8242.05,
+   "sector": "Software & IT"
+  },
+  {
+   "symbol": "MMM",
+   "name": "3M",
+   "mv": 7790.11,
+   "sector": "Industrials"
+  },
+  {
+   "symbol": "LQDA",
+   "name": "Liquidia",
+   "mv": 7768.6,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "ACN",
+   "name": "Accenture",
+   "mv": 7471.6,
+   "sector": "Software & IT"
+  },
+  {
+   "symbol": "JD",
+   "name": "JD.com ADR",
+   "mv": 7456.93,
+   "sector": "Consumer Discretionary"
+  },
+  {
+   "symbol": "CMG",
+   "name": "Chipotle",
+   "mv": 7322.18,
+   "sector": "Consumer Discretionary"
+  },
+  {
+   "symbol": "UPS",
+   "name": "United Parcel Service",
+   "mv": 6768.89,
+   "sector": "Industrials"
+  },
+  {
+   "symbol": "V",
+   "name": "Visa",
+   "mv": 6504.58,
+   "sector": "Financials"
+  },
+  {
+   "symbol": "GSBD",
+   "name": "Goldman Sachs BDC",
+   "mv": 6455.81,
+   "sector": "Financials"
+  },
+  {
+   "symbol": "FIGR",
+   "name": "Figure Technology",
+   "mv": 6269.25,
+   "sector": "Financials"
+  },
+  {
+   "symbol": "TSM",
+   "name": "Taiwan Semiconductor ADR",
+   "mv": 6259.4,
+   "sector": "Semiconductors"
+  },
+  {
+   "symbol": "JPM",
+   "name": "JPMorgan Chase",
+   "mv": 6095.09,
+   "sector": "Financials"
+  },
+  {
+   "symbol": "BAYRY",
+   "name": "Bayer ADR",
+   "mv": 5928,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "HOOD",
+   "name": "Robinhood",
+   "mv": 5808,
+   "sector": "Financials"
+  },
+  {
+   "symbol": "SOFI",
+   "name": "SoFi Technologies",
+   "mv": 5673.63,
+   "sector": "Financials"
+  },
+  {
+   "symbol": "ETSY",
+   "name": "Etsy",
+   "mv": 5470.4,
+   "sector": "Consumer Discretionary"
+  },
+  {
+   "symbol": "TCRX",
+   "name": "TScan Therapeutics",
+   "mv": 5037.68,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "PEP",
+   "name": "PepsiCo",
+   "mv": 4798.61,
+   "sector": "Consumer Staples"
+  },
+  {
+   "symbol": "FUN",
+   "name": "Six Flags",
+   "mv": 4692,
+   "sector": "Consumer Discretionary"
+  },
+  {
+   "symbol": "BIO",
+   "name": "Bio-Rad Laboratories",
+   "mv": 4591.95,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "BEP",
+   "name": "Brookfield Renewable",
+   "mv": 4525,
+   "sector": "Utilities"
+  },
+  {
+   "symbol": "GRCE",
+   "name": "Grace Therapeutics",
+   "mv": 4497.93,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "MNDY",
+   "name": "Monday.com",
+   "mv": 4489.38,
+   "sector": "Software & IT"
+  },
+  {
+   "symbol": "GPCR",
+   "name": "Structure Therapeutics",
+   "mv": 4201.12,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "ADSK",
+   "name": "Autodesk",
+   "mv": 3560.1,
+   "sector": "Software & IT"
+  },
+  {
+   "symbol": "LULU",
+   "name": "Lululemon",
+   "mv": 3170.25,
+   "sector": "Consumer Discretionary"
+  },
+  {
+   "symbol": "UBER",
+   "name": "Uber Technologies",
+   "mv": 2865.64,
+   "sector": "Industrials"
+  },
+  {
+   "symbol": "NKE",
+   "name": "Nike B",
+   "mv": 1812.97,
+   "sector": "Consumer Discretionary"
+  },
+  {
+   "symbol": "ATZAF",
+   "name": "Aritzia",
+   "mv": 1714.61,
+   "sector": "Consumer Discretionary"
+  },
+  {
+   "symbol": "SOLS",
+   "name": "Solstice Advanced Materials",
+   "mv": 1678.43,
+   "sector": "Materials"
+  },
+  {
+   "symbol": "SNPS",
+   "name": "Synopsys",
+   "mv": 1523.94,
+   "sector": "Software & IT"
+  },
+  {
+   "symbol": "SOLV",
+   "name": "Solventum",
+   "mv": 1423.29,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "PALI",
+   "name": "Palisade Bio",
+   "mv": 1252.08,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "XIFR",
+   "name": "XPLR Infrastructure",
+   "mv": 1109.11,
+   "sector": "Utilities"
+  },
+  {
+   "symbol": "FULC",
+   "name": "Fulcrum Therapeutics",
+   "mv": 704.41,
+   "sector": "Health Care"
+  },
+  {
+   "symbol": "WAB",
+   "name": "Wabtec",
+   "mv": 265.12,
+   "sector": "Industrials"
+  },
+  {
+   "symbol": "GEVO",
+   "name": "Gevo",
+   "mv": 1.82,
+   "sector": "Energy"
+  }
+ ]
+}

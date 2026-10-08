@@ -1,0 +1,274 @@
+{
+ "note": "Hybrid taxonomy: themes with origin \"stoxtrxr\" mirror the manager's own STOXTRXR baskets; \"sif\" themes cover the rest of the book. This file is the ONLY place a name's theme is set — to re-theme a name, move its ticker to another theme's `names` list. The app flags any position that is in no theme.",
+ "themes": [
+  {
+   "id": "ai-compute",
+   "label": "AI Compute / Accelerators",
+   "emoji": "🧠",
+   "origin": "stoxtrxr",
+   "names": [
+    "NVDA",
+    "AMD",
+    "QCOM",
+    "AMBA"
+   ]
+  },
+  {
+   "id": "hyperscalers",
+   "label": "Hyperscalers / Mega-cap Tech",
+   "emoji": "☁️",
+   "origin": "stoxtrxr",
+   "names": [
+    "GOOGL",
+    "AMZN",
+    "MSFT",
+    "AAPL",
+    "META"
+   ]
+  },
+  {
+   "id": "semi-equip",
+   "label": "Semi Equipment / Test",
+   "emoji": "🔬",
+   "origin": "stoxtrxr",
+   "names": [
+    "LRCX",
+    "AMAT",
+    "KLAC"
+   ]
+  },
+  {
+   "id": "memory",
+   "label": "Memory / Storage",
+   "emoji": "💾",
+   "origin": "stoxtrxr",
+   "names": [
+    "SNDK",
+    "WDC"
+   ]
+  },
+  {
+   "id": "foundry",
+   "label": "Foundry / Packaging",
+   "emoji": "🏭",
+   "origin": "stoxtrxr",
+   "names": [
+    "TSM"
+   ]
+  },
+  {
+   "id": "interconnect",
+   "label": "Interconnect / Connectivity",
+   "emoji": "🔌",
+   "origin": "stoxtrxr",
+   "names": [
+    "CRDO"
+   ]
+  },
+  {
+   "id": "software",
+   "label": "Software / Internet",
+   "emoji": "💻",
+   "origin": "stoxtrxr",
+   "names": [
+    "SNOW",
+    "ADBE",
+    "SNPS",
+    "CRM",
+    "ACN",
+    "MNDY",
+    "ADSK"
+   ]
+  },
+  {
+   "id": "media-telecom",
+   "label": "Media & Telecom",
+   "emoji": "📺",
+   "origin": "sif",
+   "names": [
+    "DIS",
+    "NFLX",
+    "SPOT",
+    "VZ",
+    "T",
+    "DTEGY"
+   ]
+  },
+  {
+   "id": "banks",
+   "label": "Banks & Credit",
+   "emoji": "🏦",
+   "origin": "sif",
+   "names": [
+    "JPM",
+    "C",
+    "CFG",
+    "MTB",
+    "HOPE",
+    "GSBD"
+   ]
+  },
+  {
+   "id": "fintech",
+   "label": "Payments & Fintech",
+   "emoji": "💳",
+   "origin": "sif",
+   "names": [
+    "V",
+    "AXP",
+    "HOOD",
+    "SOFI",
+    "FIGR"
+   ]
+  },
+  {
+   "id": "holdcos",
+   "label": "Insurance & Holding Cos",
+   "emoji": "🛡️",
+   "origin": "sif",
+   "names": [
+    "BRK/B",
+    "LMND"
+   ]
+  },
+  {
+   "id": "staples",
+   "label": "Consumer Staples",
+   "emoji": "🛒",
+   "origin": "sif",
+   "names": [
+    "COST",
+    "WMT",
+    "KO",
+    "PEP",
+    "SJM"
+   ]
+  },
+  {
+   "id": "retail",
+   "label": "Retail & Brands",
+   "emoji": "🛍️",
+   "origin": "sif",
+   "names": [
+    "HD",
+    "LULU",
+    "NKE",
+    "ETSY",
+    "JD",
+    "ATZAF"
+   ]
+  },
+  {
+   "id": "leisure",
+   "label": "Restaurants & Leisure",
+   "emoji": "🍽️",
+   "origin": "sif",
+   "names": [
+    "SBUX",
+    "CMG",
+    "FUN",
+    "CALY"
+   ]
+  },
+  {
+   "id": "mobility",
+   "label": "Transport & Mobility",
+   "emoji": "🚚",
+   "origin": "sif",
+   "names": [
+    "UPS",
+    "UBER",
+    "RIVN"
+   ]
+  },
+  {
+   "id": "industrials",
+   "label": "Industrials & Materials",
+   "emoji": "⚙️",
+   "origin": "sif",
+   "names": [
+    "CAT",
+    "HON",
+    "MMM",
+    "BA",
+    "WAB",
+    "SOLS"
+   ]
+  },
+  {
+   "id": "services",
+   "label": "Waste & Business Services",
+   "emoji": "♻️",
+   "origin": "sif",
+   "names": [
+    "RSG",
+    "WM",
+    "ABM"
+   ]
+  },
+  {
+   "id": "power",
+   "label": "Power & Energy",
+   "emoji": "⚡",
+   "origin": "sif",
+   "names": [
+    "BE",
+    "BEP",
+    "XIFR",
+    "GEVO"
+   ]
+  },
+  {
+   "id": "health-services",
+   "label": "Healthcare Services",
+   "emoji": "🩺",
+   "origin": "stoxtrxr",
+   "names": [
+    "UNH",
+    "CVS"
+   ]
+  },
+  {
+   "id": "pharma",
+   "label": "Pharma & Biotech",
+   "emoji": "💊",
+   "origin": "sif",
+   "names": [
+    "JNJ",
+    "GILD",
+    "BAYRY",
+    "CYTK",
+    "STOK",
+    "LQDA",
+    "GPCR",
+    "TCRX",
+    "GRCE",
+    "PALI",
+    "FULC"
+   ]
+  },
+  {
+   "id": "medtech",
+   "label": "MedTech & Tools",
+   "emoji": "🧪",
+   "origin": "sif",
+   "names": [
+    "TMO",
+    "ISRG",
+    "PHG",
+    "BIO",
+    "SOLV"
+   ]
+  },
+  {
+   "id": "real-estate",
+   "label": "Real Estate",
+   "emoji": "🏢",
+   "origin": "sif",
+   "names": [
+    "IRM",
+    "ARE"
+   ]
+  }
+ ]
+}
