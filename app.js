@@ -20,16 +20,18 @@
   const fmtDate = (d, opt) => new Date(d + "T12:00:00Z").toLocaleDateString("en-US", opt || { month: "short", day: "numeric", year: "numeric" });
   const SLOTS = ["--s1", "--s2", "--s3", "--s4", "--s5", "--s6", "--s7", "--s8"];
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-  const MAX_THEMES_ON_CHART = 6;
+  const MAX_THEMES_ON_CHART = 8;
 
-  let POS, THEMES, CL, TH, DAYS, P, SNAP, LAST, SH = {}, THEME_OF = {}, ROWS = [], FUND, TV = {}, BENCH;
-  const state = { tf: "snap", onChart: [], slotOf: {}, open: {}, hsort: { k: "now", dir: -1 }, group: "theme", hq: "", tq: "", tf2: "all", tcTf: "ytd" };
+  // Two levels: CATS (broad: Tech, Healthcare…) hold THEMES (subcategories) which hold tickers.
+  // A category's series id is "c:<id>"; a subcategory's is its own id.
+  let POS, THEMES, CATS, CL, TH, DAYS, P, SNAP, LAST, SH = {}, THEME_OF = {}, CAT_OF = {}, ROWS = [], FUND, TV = {}, BENCH;
+  const state = { tf: "snap", onChart: [], slotOf: {}, open: {}, hsort: { k: "now", dir: -1 }, group: "cat", hq: "", tq: "", tf2: "all", tcTf: "ytd" };
 
   Promise.all(["positions", "themes", "closes", "theses"].map((n) => fetch(`data/${n}.json?t=${Date.now()}`).then((r) => {
     if (!r.ok) throw new Error(`data/${n}.json: HTTP ${r.status}`);
     return r.json();
   }))).then(([pos, th, cl, tz]) => {
-    POS = pos; THEMES = th.themes; CL = cl; TH = (tz && tz.theses) || {};
+    POS = pos; THEMES = th.themes; CATS = th.categories || [{ id: "all", label: "All", emoji: "", themes: th.themes.map((t) => t.id) }]; CL = cl; TH = (tz && tz.theses) || {};
     build();
     $("loading").remove();
     renderAll();
@@ -56,16 +58,19 @@
     SNAP = DAYS.reduce((k, d, i) => (d <= POS.asOf ? i : k), 0);
     LAST = DAYS.length - 1;
     for (const t of THEMES) for (const s of t.names) THEME_OF[s] = t.id;
+    for (const c of CATS) for (const t of c.themes) CAT_OF[t] = c.id;
     ROWS = POS.positions.map((p) => {
       const pr = P[p.symbol];
       const p0 = pr && pr[SNAP];
       const sh = p0 ? p.mv / p0 : null;
       SH[p.symbol] = sh;
-      return { ...p, theme: THEME_OF[p.symbol] || null, sh, p0 };
+      const theme = THEME_OF[p.symbol] || null;
+      return { ...p, theme, cat: theme ? CAT_OF[theme] || null : null, sh, p0 };
     });
     const valAt = (r, i) => (r.sh != null ? r.sh * P[r.symbol][i] : r.mv);
     FUND = DAYS.map((_, i) => ROWS.reduce((a, r) => a + valAt(r, i), 0) + POS.cashValue);
     for (const t of THEMES) TV[t.id] = DAYS.map((_, i) => ROWS.filter((r) => r.theme === t.id).reduce((a, r) => a + valAt(r, i), 0));
+    for (const c of CATS) TV["c:" + c.id] = DAYS.map((_, i) => c.themes.reduce((a, t) => a + (TV[t] ? TV[t][i] : 0), 0));
     for (const r of ROWS) {
       r.now = valAt(r, LAST);
       r.prev = valAt(r, LAST - 1);
@@ -75,14 +80,24 @@
       r.pnl = r.now - r.mv;
       r.price = P[r.symbol] ? P[r.symbol][LAST] : null;
     }
-    // default chart: the five heaviest themes
-    state.onChart = THEMES.map((t) => t.id).filter((id) => TV[id][LAST] > 0)
-      .sort((a, b) => TV[b][LAST] - TV[a][LAST]).slice(0, 5);
+    // default chart: every broad category, heaviest first
+    state.onChart = CATS.map((c) => "c:" + c.id).filter((id) => TV[id][LAST] > 0)
+      .sort((a, b) => TV[b][LAST] - TV[a][LAST]).slice(0, MAX_THEMES_ON_CHART);
     state.onChart.forEach((id, i) => (state.slotOf[id] = SLOTS[i]));
   }
   const total = () => FUND[LAST];
   const themeById = (id) => THEMES.find((t) => t.id === id);
-  const themeLabel = (id) => { const t = themeById(id); return t ? `${t.emoji} ${t.label}` : "Unthemed"; };
+  const catById = (id) => CATS.find((c) => c.id === id);
+  // Label for a series id: a category ("c:tech") or a subcategory ("ai-compute").
+  const themeLabel = (id) => {
+    if (id && id.startsWith("c:")) { const c = catById(id.slice(2)); return c ? `${c.emoji} ${c.label}` : id; }
+    const t = themeById(id); return t ? `${t.emoji} ${t.label}` : "Unthemed";
+  };
+  // "Tech › AI Compute / Accelerators" — where a name sits in both levels.
+  const pathLabel = (themeId) => {
+    const t = themeById(themeId); if (!t) return "Unthemed";
+    const c = catById(CAT_OF[themeId]); return c ? `${c.label} › ${t.label}` : t.label;
+  };
   const startIdx = (tf) => ({ "1w": Math.max(0, LAST - 5), "1m": Math.max(0, LAST - 21), "3m": Math.max(0, LAST - 63), snap: SNAP, ytd: 0 }[tf]);
   const TF = [["1w", "1W"], ["1m", "1M"], ["3m", "3M"], ["snap", "Since snapshot"], ["ytd", "YTD"]];
 
@@ -177,24 +192,32 @@
     const nTh = ROWS.filter((r) => TH[r.symbol] && TH[r.symbol].thesis).length;
     const ytd = (FUND[LAST] / FUND[0] - 1) * 100;
     $("cards").innerHTML = [
-      ["EQUITIES", usd(eq), `${ROWS.length} positions · ${THEMES.filter((t) => TV[t.id][LAST] > 0).length} themes`],
+      ["EQUITIES", usd(eq), `${ROWS.length} positions · ${CATS.length} categories · ${THEMES.filter((t) => TV[t.id][LAST] > 0).length} subcategories`],
       ["CASH", usd(POS.cashValue), `${((POS.cashValue / T) * 100).toFixed(1)}% of fund · as of snapshot`],
       ["SINCE SNAPSHOT", `<span class="${cls(rSnap)}">${pct(rSnap, 2)}</span>`, `S&P 500 (SPY) ${pct(spy, 2)} · ${rSnap - spy >= 0 ? "ahead" : "behind"} by ${Math.abs(rSnap - spy).toFixed(2)} pts`],
       ["YTD (BACKCAST)", `<span class="${cls(ytd)}">${pct(ytd, 2)}</span>`, `SPY ${pct(P.SPY ? (P.SPY[LAST] / P.SPY[0] - 1) * 100 : null, 2)} · snapshot shares held all year`],
       ["THESIS COVERAGE", `${nTh} / ${ROWS.length}`, `${ROWS.length - nTh} positions still need one`],
     ].map(([k, v, f]) => `<div class="stat"><div class="label">${k}</div><div class="v">${v}</div><div class="f">${f}</div></div>`).join("");
 
-    // allocation by theme
-    const th = THEMES.map((t) => ({ t, v: TV[t.id][LAST] })).filter((z) => z.v > 0).sort((a, b) => b.v - a.v);
-    const max = th[0].v;
-    $("alloc").innerHTML = th.map(({ t, v }) => {
-      const open = state.open["al:" + t.id];
-      const names = ROWS.filter((r) => r.theme === t.id).sort((a, b) => b.now - a.now);
-      return `<div class="al-row" data-al="${t.id}"><div><div class="al-name">${esc(t.emoji)} ${esc(t.label)} <span class="sub">${names.length}</span></div>`
-        + `<div class="al-track"><div class="al-fill" style="width:${((v / max) * 100).toFixed(1)}%"></div></div></div>`
-        + `<div class="al-v">${usdK(v)}</div><div class="al-p">${((v / T) * 100).toFixed(1)}%</div></div>`
-        + (open ? `<div class="al-members">${names.map((r) => `<span class="chip" data-sym="${esc(r.symbol)}"><b>${esc(r.symbol)}</b> ${((r.now / T) * 100).toFixed(1)}% <span class="${cls(r.since)}">${pct(r.since)}</span></span>`).join("")}</div>` : "");
-    }).join("") + `<div class="al-row" style="cursor:default"><div><div class="al-name">💵 Cash</div><div class="al-track"><div class="al-fill" style="width:${((POS.cashValue / max) * 100).toFixed(1)}%;background:var(--bench)"></div></div></div><div class="al-v">${usdK(POS.cashValue)}</div><div class="al-p">${((POS.cashValue / T) * 100).toFixed(1)}%</div></div>`;
+    // allocation: broad categories; click one for its subcategories, a subcategory for its names
+    const cats = CATS.map((c) => ({ c, v: TV["c:" + c.id][LAST] })).filter((z) => z.v > 0).sort((a, b) => b.v - a.v);
+    const max = cats[0].v;
+    const barRow = (key, label, n, v, sub, open) => `<div class="al-row${sub ? " al-sub" : ""}" data-al="${key}">`
+      + `<div><div class="al-name"><span class="caret">${open ? "▾" : "▸"}</span>${label} <span class="sub">${n}</span></div>`
+      + `<div class="al-track"><div class="al-fill" style="width:${((v / max) * 100).toFixed(1)}%"></div></div></div>`
+      + `<div class="al-v">${usdK(v)}</div><div class="al-p">${((v / T) * 100).toFixed(1)}%</div></div>`;
+    $("alloc").innerHTML = cats.map(({ c, v }) => {
+      const openC = !!state.open["al:c:" + c.id];
+      let h = barRow("c:" + c.id, `${esc(c.emoji)} ${esc(c.label)}`, ROWS.filter((r) => r.cat === c.id).length, v, false, openC);
+      if (!openC) return h;
+      const subs = c.themes.map((id) => ({ t: themeById(id), v: TV[id] ? TV[id][LAST] : 0 })).filter((z) => z.t && z.v > 0).sort((a, b) => b.v - a.v);
+      return h + subs.map(({ t, v: sv }) => {
+        const openT = !!state.open["al:" + t.id];
+        const names = ROWS.filter((r) => r.theme === t.id).sort((a, b) => b.now - a.now);
+        return barRow(t.id, `${esc(t.emoji)} ${esc(t.label)}`, names.length, sv, true, openT)
+          + (openT ? `<div class="al-members al-sub">${names.map((r) => `<span class="chip" data-sym="${esc(r.symbol)}"><b>${esc(r.symbol)}</b> ${((r.now / T) * 100).toFixed(1)}% <span class="${cls(r.since)}">${pct(r.since)}</span></span>`).join("")}</div>` : "");
+      }).join("");
+    }).join("") + `<div class="al-row" style="cursor:default"><div><div class="al-name"><span class="caret"></span>💵 Cash</div><div class="al-track"><div class="al-fill" style="width:${((POS.cashValue / max) * 100).toFixed(1)}%;background:var(--bench)"></div></div></div><div class="al-v">${usdK(POS.cashValue)}</div><div class="al-p">${((POS.cashValue / T) * 100).toFixed(1)}%</div></div>`;
 
     // movers + contributors
     const live = ROWS.filter((r) => r.day != null);
@@ -233,48 +256,70 @@
       ...state.onChart.map((id) => ({ label: themeLabel(id), color: slotColor(id), values: rebase(TV[id]) })),
     ];
     $("legend").innerHTML = series.map((s) => `<span class="lg"><i class="${s.dash ? "dash" : ""}" style="background:${s.color};height:${s.width && s.width > 2 ? 3 : 2}px"></i>${esc(s.label)}</span>`).join("");
-    lineChart($("themeChart"), dates, series, { base: 100, fmt: (v) => v.toFixed(0), tipFmt: (v) => pct(v - 100), marker: s0 < SNAP ? SNAP - s0 : null, markerLabel: "snapshot", aria: "Theme performance" });
+    lineChart($("themeChart"), dates, series, { base: 100, fmt: (v) => v.toFixed(0), tipFmt: (v) => pct(v - 100), marker: s0 < SNAP ? SNAP - s0 : null, markerLabel: "snapshot", aria: "Performance by category and subcategory" });
 
+    // Table: categories (ranked by return), each expanding to its subcategories, each to its names.
     const T = total();
-    const rows = THEMES.filter((t) => TV[t.id][LAST] > 0).map((t) => ({ t, w: (TV[t.id][LAST] / T) * 100, r: (TV[t.id][LAST] / TV[t.id][s0] - 1) * 100 }))
-      .sort((a, b) => b.r - a.r);
+    const ret = (id) => (TV[id][LAST] / TV[id][s0] - 1) * 100;
     const fundR = (FUND[LAST] / FUND[s0] - 1) * 100, spyR = (P.SPY[LAST] / P.SPY[s0] - 1) * 100;
-    const mx = Math.max(...rows.map((z) => Math.abs(z.r)), Math.abs(fundR), Math.abs(spyR), 1);
+    const cats = CATS.filter((c) => TV["c:" + c.id][LAST] > 0).map((c) => ({ c, id: "c:" + c.id, r: ret("c:" + c.id) })).sort((a, b) => b.r - a.r);
+    const allIds = [...cats.map((z) => z.id), ...THEMES.filter((t) => TV[t.id][LAST] > 0).map((t) => t.id)];
+    const mx = Math.max(...allIds.map((id) => Math.abs(ret(id))), Math.abs(fundR), Math.abs(spyR), 1);
     const bar = (r) => { const w = (Math.abs(r) / mx) * 50; return `<div class="rbar"><span style="${r >= 0 ? `left:50%;width:${w}%;background:var(--pos)` : `left:${50 - w}%;width:${w}%;background:var(--neg)`}"></span><i class="mid"></i></div>`; };
-    $("trSub").textContent = `${TF.find((z) => z[0] === state.tf)[1]} · fund ${pct(fundR, 2)} vs SPY ${pct(spyR, 2)}`;
-    $("themeTable").innerHTML = `<tr><th>THEME</th><th class="r">NAMES</th><th class="r">WEIGHT</th><th class="r">RETURN</th><th style="width:30%"></th></tr>`
-      + rows.map(({ t, w, r }) => {
-        const on = state.onChart.includes(t.id), open = state.open["th:" + t.id];
-        const names = ROWS.filter((x) => x.theme === t.id).map((x) => ({ x, r: x.sh != null ? (P[x.symbol][LAST] / P[x.symbol][s0] - 1) * 100 : null })).sort((a, b) => (b.r ?? -1e9) - (a.r ?? -1e9));
-        return `<tr class="row ${on ? "on" : ""}" data-th="${t.id}"><td><span class="sw" data-toggle="${t.id}" title="${on ? "Remove from" : "Add to"} the chart" style="${on ? `background:${slotColor(t.id)}` : ""}"></span>${esc(t.emoji)} ${esc(t.label)}${t.origin === "stoxtrxr" ? ' <span class="sub">manager theme</span>' : ""}</td>`
-          + `<td class="r">${names.length}</td><td class="r">${w.toFixed(1)}%</td><td class="r ${cls(r)}"><b>${pct(r, 2)}</b></td><td>${bar(r)}</td></tr>`
-          + (open ? `<tr><td colspan="5"><div class="al-members">${names.map(({ x, r }) => `<span class="chip" data-sym="${esc(x.symbol)}"><b>${esc(x.symbol)}</b> <span class="${cls(r)}">${pct(r)}</span></span>`).join("")}</div></td></tr>` : "");
+    const sw = (id) => { const on = state.onChart.includes(id); return `<span class="sw" data-toggle="${id}" title="${on ? "Remove from" : "Add to"} the chart" style="${on ? `background:${slotColor(id)}` : ""}"></span>`; };
+    const line = (id, label, n, sub, open) => {
+      const r = ret(id);
+      return `<tr class="row${sub ? " sub" : " cat"}${state.onChart.includes(id) ? " on" : ""}" data-th="${id}"><td>${sw(id)}<span class="caret">${open ? "▾" : "▸"}</span>${label}</td>`
+        + `<td class="r">${n}</td><td class="r">${((TV[id][LAST] / T) * 100).toFixed(1)}%</td><td class="r ${cls(r)}"><b>${pct(r, 2)}</b></td><td>${bar(r)}</td></tr>`;
+    };
+    $("trSub").textContent = `${TF.find((z) => z[0] === state.tf)[1]} · fund ${pct(fundR, 2)} vs SPY ${pct(spyR, 2)} · tick a box to chart it, click a row to open it`;
+    $("themeTable").innerHTML = `<tr><th>CATEGORY / SUBCATEGORY</th><th class="r">NAMES</th><th class="r">WEIGHT</th><th class="r">RETURN</th><th style="width:28%"></th></tr>`
+      + cats.map(({ c, id }) => {
+        const openC = !!state.open["th:" + id];
+        let h = line(id, `${esc(c.emoji)} <b>${esc(c.label)}</b>`, ROWS.filter((r) => r.cat === c.id).length, false, openC);
+        if (!openC) return h;
+        const subs = c.themes.map(themeById).filter((t) => t && TV[t.id][LAST] > 0).sort((a, b) => ret(b.id) - ret(a.id));
+        return h + subs.map((t) => {
+          const openT = !!state.open["th:" + t.id];
+          const names = ROWS.filter((x) => x.theme === t.id).map((x) => ({ x, r: x.sh != null ? (P[x.symbol][LAST] / P[x.symbol][s0] - 1) * 100 : null })).sort((a, b) => (b.r ?? -1e9) - (a.r ?? -1e9));
+          return line(t.id, `${esc(t.emoji)} ${esc(t.label)}${t.origin === "stoxtrxr" ? ' <span class="sub">manager theme</span>' : ""}`, names.length, true, openT)
+            + (openT ? `<tr class="sub2"><td colspan="5"><div class="al-members">${names.map(({ x, r }) => `<span class="chip" data-sym="${esc(x.symbol)}"><b>${esc(x.symbol)}</b> <span class="${cls(r)}">${pct(r)}</span></span>`).join("")}</div></td></tr>` : "");
+        }).join("");
       }).join("")
       + `<tr><td><b>SIF fund</b></td><td class="r">${ROWS.length}</td><td class="r">100%</td><td class="r ${cls(fundR)}"><b>${pct(fundR, 2)}</b></td><td>${bar(fundR)}</td></tr>`
       + `<tr><td>S&amp;P 500 (SPY)</td><td></td><td></td><td class="r ${cls(spyR)}">${pct(spyR, 2)}</td><td>${bar(spyR)}</td></tr>`;
   }
 
   // ---------------------------------------------------------------- holdings tab
-  const HCOLS = [["symbol", "POSITION", ""], ["theme", "THEME", ""], ["now", "VALUE", "r"], ["w", "WEIGHT", "r"], ["day", "LAST DAY", "r"], ["since", "SINCE SNAPSHOT", "r"], ["ytd", "YTD", "r"]];
+  const HCOLS = [["symbol", "POSITION", ""], ["theme", "SUBCATEGORY", ""], ["now", "VALUE", "r"], ["w", "WEIGHT", "r"], ["day", "LAST DAY", "r"], ["since", "SINCE SNAPSHOT", "r"], ["ytd", "YTD", "r"]];
   function renderHoldings() {
     const T = total(), q = state.hq.toLowerCase();
-    const rows = ROWS.map((r) => ({ ...r, w: (r.now / T) * 100 })).filter((r) => !q || r.symbol.toLowerCase().includes(q) || String(r.name).toLowerCase().includes(q) || themeLabel(r.theme).toLowerCase().includes(q));
+    const rows = ROWS.map((r) => ({ ...r, w: (r.now / T) * 100 })).filter((r) => !q || r.symbol.toLowerCase().includes(q) || String(r.name).toLowerCase().includes(q) || pathLabel(r.theme).toLowerCase().includes(q));
     const { k, dir } = state.hsort;
-    const sorter = (a, b) => { const A = a[k], B = b[k]; if (A == null) return 1; if (B == null) return -1; return (typeof A === "string" ? A.localeCompare(B) : A - B) * dir; };
-    const line = (r) => `<tr class="row" data-sym="${esc(r.symbol)}"><td><b>${esc(r.symbol)}</b> <span class="co">${esc(r.name)}</span></td><td>${esc(themeLabel(r.theme))}</td>`
+    const keyOf = (r, kk) => (kk === "theme" ? pathLabel(r.theme) : r[kk]);
+    const sorter = (a, b) => { const A = keyOf(a, k), B = keyOf(b, k); if (A == null) return 1; if (B == null) return -1; return (typeof A === "string" ? A.localeCompare(B) : A - B) * dir; };
+    const line = (r, flat) => `<tr class="row" data-sym="${esc(r.symbol)}"><td><b>${esc(r.symbol)}</b> <span class="co">${esc(r.name)}</span></td><td>${esc(flat ? pathLabel(r.theme) : (themeById(r.theme) || {}).label || "Unthemed")}</td>`
       + `<td class="r">${usd(r.now)}</td><td class="r">${r.w.toFixed(2)}%</td><td class="r ${cls(r.day)}">${pct(r.day)}</td><td class="r ${cls(r.since)}">${pct(r.since)}</td><td class="r ${cls(r.ytd)}">${pct(r.ytd)}</td></tr>`;
+    const head = (key, cssCls, label, n, list) => {
+      const v = list.reduce((s, r) => s + r.now, 0), v0 = list.reduce((s, r) => s + r.mv, 0), collapsed = state.open["hg:" + key] === false;
+      return { collapsed, html: `<tr class="${cssCls}" data-hg="${key}"><td><span class="caret">${collapsed ? "▸" : "▾"}</span>${label} <span class="sub">${n}</span></td><td></td><td class="r">${usd(v)}</td><td class="r">${((v / T) * 100).toFixed(1)}%</td><td></td><td class="r ${cls(v / v0 - 1)}">${pct((v / v0 - 1) * 100)}</td><td></td></tr>` };
+    };
+    const sumNow = (l) => l.reduce((s, r) => s + r.now, 0);
     let body = "";
-    if (state.group === "theme") {
-      const groups = THEMES.map((t) => ({ t, rows: rows.filter((r) => r.theme === t.id).sort(sorter) })).filter((g) => g.rows.length)
-        .sort((a, b) => b.rows.reduce((s, r) => s + r.now, 0) - a.rows.reduce((s, r) => s + r.now, 0));
-      const loose = rows.filter((r) => !r.theme);
-      if (loose.length) groups.push({ t: { id: "_none", emoji: "⚠️", label: "Not in any theme — add to data/themes.json" }, rows: loose });
-      body = groups.map(({ t, rows }) => {
-        const v = rows.reduce((s, r) => s + r.now, 0), v0 = rows.reduce((s, r) => s + r.mv, 0), collapsed = state.open["hg:" + t.id] === false;
-        return `<tr class="grp" data-hg="${t.id}"><td>${collapsed ? "▸" : "▾"} ${esc(t.emoji)} ${esc(t.label)} <span class="sub">${rows.length}</span></td><td></td><td class="r">${usd(v)}</td><td class="r">${((v / T) * 100).toFixed(1)}%</td><td></td><td class="r ${cls(v / v0 - 1)}">${pct((v / v0 - 1) * 100)}</td><td></td></tr>`
-          + (collapsed ? "" : rows.map(line).join(""));
+    if (state.group === "cat") {
+      const cats = CATS.map((c) => ({ c, rows: rows.filter((r) => r.cat === c.id) })).filter((g) => g.rows.length).sort((a, b) => sumNow(b.rows) - sumNow(a.rows));
+      body = cats.map(({ c, rows: cr }) => {
+        const hc = head("c:" + c.id, "grp", `${esc(c.emoji)} ${esc(c.label)}`, cr.length, cr);
+        if (hc.collapsed) return hc.html;
+        const subs = c.themes.map((id) => ({ t: themeById(id), rows: cr.filter((r) => r.theme === id) })).filter((g) => g.t && g.rows.length).sort((a, b) => sumNow(b.rows) - sumNow(a.rows));
+        return hc.html + subs.map(({ t, rows: tr }) => {
+          const ht = head(t.id, "grp sub", `${esc(t.emoji)} ${esc(t.label)}`, tr.length, tr);
+          return ht.html + (ht.collapsed ? "" : tr.sort(sorter).map((r) => line(r, false)).join(""));
+        }).join("");
       }).join("");
-    } else body = rows.sort(sorter).map(line).join("");
+      const loose = rows.filter((r) => !r.cat);
+      if (loose.length) body += head("_none", "grp", "⚠️ Not in any category — add to data/themes.json", loose.length, loose).html + loose.map((r) => line(r, true)).join("");
+    } else body = rows.sort(sorter).map((r) => line(r, true)).join("");
     $("holdTable").innerHTML = `<tr>${HCOLS.map(([kk, l, c]) => `<th class="${c}" data-sort="${kk}">${l}${k === kk ? (dir < 0 ? " ↓" : " ↑") : ""}</th>`).join("")}</tr>` + body
       + `<tr><td><b>Cash</b></td><td></td><td class="r">${usd(POS.cashValue)}</td><td class="r">${((POS.cashValue / T) * 100).toFixed(2)}%</td><td></td><td></td><td></td></tr>`;
   }
@@ -292,7 +337,7 @@
     $("thesisList").innerHTML = list.map((r) => {
       const t = TH[r.symbol];
       return `<div class="th-item" data-sym="${esc(r.symbol)}"><div class="h"><span class="s">${esc(r.symbol)}</span><span class="n">${esc(r.name)}</span><span class="w">${((r.now / T) * 100).toFixed(1)}%</span></div>`
-        + `<div class="hint" style="font-size:12px;margin-top:2px">${esc(themeLabel(r.theme))}${t && t.stance ? ` · <b>${esc(t.stance)}</b>` : ""}</div>`
+        + `<div class="hint" style="font-size:12px;margin-top:2px">${esc(pathLabel(r.theme))}${t && t.stance ? ` · <b>${esc(t.stance)}</b>` : ""}</div>`
         + (t && t.thesis ? `<div class="x">${esc(t.thesis)}</div>` : `<div class="x none">No thesis yet.</div>`) + `</div>`;
     }).join("");
   }
@@ -307,7 +352,7 @@
     $("tcMeta").innerHTML = r.price != null
       ? `<b>${usd(r.price, 2)}</b> · <span class="${cls(r.day)}">${pct(r.day, 2)}</span> on ${esc(fmtDate(DAYS[LAST], { month: "short", day: "numeric" }))}`
       : `<span class="hint">No price feed for this name — held at its snapshot value.</span>`;
-    $("tcTags").innerHTML = `<span class="tag">${esc(themeLabel(r.theme))}</span>${t && t.stance ? `<span class="tag stance">${esc(t.stance)}</span>` : ""}`;
+    $("tcTags").innerHTML = `<span class="tag">${esc(pathLabel(r.theme))}</span>${t && t.stance ? `<span class="tag stance">${esc(t.stance)}</span>` : ""}`;
     $("tcFacts").innerHTML = [
       ["VALUE NOW", usd(r.now)], ["WEIGHT", ((r.now / T) * 100).toFixed(2) + "%"], ["SINCE SNAPSHOT", `<span class="${cls(r.since)}">${pct(r.since)}</span>`],
       ["AT SNAPSHOT", usd(r.mv)], ["IMPLIED SHARES", r.sh != null ? r.sh.toLocaleString("en-US", { maximumFractionDigits: 2 }) : "—"], ["YTD", `<span class="${cls(r.ytd)}">${pct(r.ytd)}</span>`],

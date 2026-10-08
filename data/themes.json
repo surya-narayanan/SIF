@@ -1,5 +1,78 @@
 {
- "note": "Hybrid taxonomy: themes with origin \"stoxtrxr\" mirror the manager's own STOXTRXR baskets; \"sif\" themes cover the rest of the book. This file is the ONLY place a name's theme is set — to re-theme a name, move its ticker to another theme's `names` list. The app flags any position that is in no theme.",
+ "note": "Two levels. `categories` are the broad buckets (Tech, Healthcare, Consumer…) and list their subcategory ids; `themes` are the subcategories and list their tickers. A ticker is themed ONLY here — move it between `names` lists to re-theme it; move a subcategory id between `categories[].themes` to regroup. Subcategories with origin \"stoxtrxr\" mirror the manager's own STOXTRXR baskets.",
+ "categories": [
+  {
+   "id": "tech",
+   "label": "Tech",
+   "emoji": "💻",
+   "themes": [
+    "hyperscalers",
+    "ai-compute",
+    "semi-equip",
+    "memory",
+    "foundry",
+    "interconnect",
+    "software"
+   ]
+  },
+  {
+   "id": "health",
+   "label": "Healthcare",
+   "emoji": "🩺",
+   "themes": [
+    "health-services",
+    "pharma",
+    "medtech"
+   ]
+  },
+  {
+   "id": "consumer",
+   "label": "Consumer",
+   "emoji": "🛍️",
+   "themes": [
+    "staples",
+    "retail",
+    "leisure"
+   ]
+  },
+  {
+   "id": "financials",
+   "label": "Financials",
+   "emoji": "🏦",
+   "themes": [
+    "banks",
+    "fintech",
+    "holdcos"
+   ]
+  },
+  {
+   "id": "industrials",
+   "label": "Industrials",
+   "emoji": "⚙️",
+   "themes": [
+    "industrials",
+    "mobility",
+    "services"
+   ]
+  },
+  {
+   "id": "comms",
+   "label": "Communications",
+   "emoji": "📺",
+   "themes": [
+    "media-telecom"
+   ]
+  },
+  {
+   "id": "energy-re",
+   "label": "Energy & Real Estate",
+   "emoji": "⚡",
+   "themes": [
+    "power",
+    "real-estate"
+   ]
+  }
+ ],
  "themes": [
   {
    "id": "ai-compute",

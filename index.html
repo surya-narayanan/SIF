@@ -39,7 +39,7 @@
 
       <div class="two">
         <div class="card pad">
-          <div class="h2">Allocation by theme <span class="sub">click a theme for its names</span></div>
+          <div class="h2">Allocation by category <span class="sub">click a category for its subcategories, a subcategory for its names</span></div>
           <div id="alloc"></div>
         </div>
         <div class="card pad">
@@ -58,12 +58,12 @@
         <span class="hint" id="tfNote"></span>
       </div>
       <div class="card pad">
-        <div class="h2">Performance by theme <span class="sub">value-weighted, rebased to 100 at the window start · tick a theme below to chart it</span></div>
+        <div class="h2">Performance by category <span class="sub">value-weighted, rebased to 100 at the window start · tick any category or subcategory below to chart it</span></div>
         <div id="legend" class="legend"></div>
         <div id="themeChart" class="chart"></div>
       </div>
       <div class="card pad">
-        <div class="h2">Theme returns <span class="sub" id="trSub"></span></div>
+        <div class="h2">Returns by category <span class="sub" id="trSub"></span></div>
         <table class="tbl" id="themeTable"></table>
       </div>
     </section>
@@ -71,9 +71,9 @@
     <!-- HOLDINGS -->
     <section class="pane" id="pane-holdings" hidden>
       <div class="toolbar">
-        <input type="search" id="hq" placeholder="Filter by ticker, company or theme" />
+        <input type="search" id="hq" placeholder="Filter by ticker, company, category or subcategory" />
         <div class="seg" id="groupSeg">
-          <button data-g="theme" class="is-on">Group by theme</button>
+          <button data-g="cat" class="is-on">By category</button>
           <button data-g="none">Flat</button>
         </div>
       </div>

@@ -165,3 +165,15 @@ code { font-size: .92em; background: var(--surface-2); padding: 1px 5px; border-
 .tc-src { font-size: 12px; color: var(--muted); margin-top: 8px; }
 
 .foot { margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* two-level category tree */
+.caret { display: inline-block; width: 14px; color: var(--muted); font-size: 11px; }
+.al-row.al-sub { padding-left: 22px; }
+.al-row.al-sub .al-name { font-weight: 500; font-size: 13px; }
+.al-row.al-sub .al-fill { opacity: .55; }
+.al-members.al-sub { padding-left: 40px; }
+.tbl tr.sub td:first-child { padding-left: 34px; }
+.tbl tr.cat td { font-weight: 600; }
+.tbl tr.sub2 td { padding-left: 54px; background: var(--surface); }
+.tbl tr.grp.sub td { background: var(--surface); font-weight: 600; font-size: 13px; }
+.tbl tr.grp.sub td:first-child { padding-left: 30px; }

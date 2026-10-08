@@ -23,9 +23,9 @@ repo / public Pages site exposes the fund's positions and values to anyone.
 
 | Tab | What it shows |
 |---|---|
-| **Portfolio** | Fund value marked to the latest close, change since the snapshot and on the last session, YTD vs SPY, allocation by theme (click a theme for its names), last session's movers, biggest $ contributors |
-| **Themes** | Every theme's value-weighted performance over 1W / 1M / 3M / since the snapshot / YTD, charted against the fund and the S&P 500; a ranked returns table (tick a theme's box to chart it, click the row for its names) |
-| **Holdings** | Every position with theme, value, weight, last-day / since-snapshot / YTD return — grouped by theme or flat, sortable, filterable |
+| **Portfolio** | Fund value marked to the latest close, change since the snapshot and on the last session, YTD vs SPY, allocation by category (click to drill into subcategories, then names), last session's movers, biggest $ contributors |
+| **Themes** | Value-weighted performance of each category — or any subcategory you tick — over 1W / 1M / 3M / since the snapshot / YTD, against the fund and the S&P 500; a returns table that drills category → subcategory → names |
+| **Holdings** | Every position with value, weight, last-day / since-snapshot / YTD return — grouped by category and subcategory (with subtotals) or flat, sortable, filterable |
 | **Theses** | The thesis for every position, with stance; filter to the ones that still need writing |
 
 Click any ticker anywhere to open its card: price, theme, stance, a price chart, the position's
@@ -71,11 +71,18 @@ repo's **Actions → Refresh prices → Run workflow**.
 2. Add any new ticker to a theme in `data/themes.json` (the Holdings tab flags unthemed names).
 3. `node scripts/update_prices.mjs`, commit.
 
-### Re-theme a name
+### Categories and subcategories
 
-Move its ticker from one theme's `names` list to another in `data/themes.json`. Themes marked
-`"origin": "stoxtrxr"` mirror the manager's own baskets; `"sif"` themes cover the rest. Add a
-theme by appending `{id, label, emoji, origin, names}`.
+`data/themes.json` has two levels:
+
+* `categories` — the broad buckets (Tech, Healthcare, Consumer, Financials, Industrials,
+  Communications, Energy & Real Estate). Each lists the ids of its subcategories.
+* `themes` — the subcategories (AI Compute, Banks & Credit, Pharma & Biotech…). Each lists its
+  tickers. Subcategories marked `"origin": "stoxtrxr"` mirror the manager's own baskets.
+
+To **re-theme a name**, move its ticker to another subcategory's `names`. To **regroup**, move a
+subcategory id to another category's `themes`. To add one, append `{id, label, emoji, origin, names}`
+to `themes` and put its id in a category. The Holdings tab flags any name left out.
 
 ### Add or edit a thesis
 
