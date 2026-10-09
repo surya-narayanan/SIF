@@ -150,7 +150,7 @@ code { font-size: .92em; background: var(--surface-2); padding: 1px 5px; border-
 .modal[hidden] { display: none; }
 .backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.18); }
 .tcard { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(460px, calc(100vw - 24px)); max-height: calc(100vh - 24px); overflow-y: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; box-shadow: 0 12px 36px rgba(0,0,0,.2); overscroll-behavior: contain; }
-.x { position: absolute; right: 14px; top: 12px; border: 0; background: none; font-size: 18px; color: var(--muted); cursor: pointer; }
+.tc-close { position: absolute; right: 14px; top: 12px; border: 0; background: none; font-size: 18px; color: var(--muted); cursor: pointer; }
 .tc-sym { font-size: 30px; font-weight: 800; letter-spacing: -.01em; }
 .tc-name { color: var(--muted); font-size: 14px; margin-bottom: 6px; }
 .tc-meta { font-size: 14px; margin-bottom: 10px; font-variant-numeric: tabular-nums; }
